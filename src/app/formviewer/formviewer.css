@@ -1,0 +1,114 @@
+body { margin: 0; font-family: Roboto, "Arial", sans-serif; }
+
+.formviewer-page {
+  padding-block: 6%;
+}
+
+.section-formviewer {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #faf6f0;
+  border-radius: 8px;
+
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.07);
+  border: 1px solid #11161cc2;
+}
+
+.wrap {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+h2 { 
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  padding-bottom: 0;
+  padding-left: 0px;
+}
+
+label {
+  margin: 2rem auto;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.sub-titel {
+  margin: 2rem auto;
+  font-size: 15px;
+  font-weight: 500;
+  padding-right: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input, select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+
+.question-block {
+  margin-bottom: 1.5rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-item {
+  margin-bottom: 0.5rem;
+}
+
+.success-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: green;
+}
+
+.error-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: red;
+}
+
+button {
+  background-color: #111;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+  .section-formviewer {
+    padding: 1rem;
+  }
+
+  input[type="text"],
+  .btn-submit {
+    font-size: 1rem;
+  }
+}

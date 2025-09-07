@@ -1,0 +1,56 @@
+<div class="formviewer-page">
+  
+  <div class="wrap">
+    <section *ngIf="form; else noForm">
+      <div class="section-formviewer">
+        <h2>{{ form.title }}</h2>
+
+        <div *ngIf="!isSubmitted(); else thankYou">
+          <form (ngSubmit)="onSubmit()">
+            <div *ngFor="let q of form.questions">
+
+              <div class="sub-titel">
+                <label>{{ q.question }} <span *ngIf="q.required">*</span></label>
+
+                <input
+                  *ngIf="q.type === 'text'"
+                  type="text"
+                  [(ngModel)]="answers[q.question]"
+                  name="{{ q.question }}"
+                  required
+                />
+              </div>
+              <div *ngIf="q.type === 'multiple-choice'">
+                <label *ngFor="let opt of q.options">
+                  
+                  <input
+                    type="radio"
+                    [(ngModel)]="answers[q.question]"
+                    name="{{ q.question }}"
+                    [value]="opt"
+                    required
+                  />
+                  
+                  {{ opt }}
+                </label>
+              </div>
+              <p></p><hr />
+            </div>
+
+            <button type="submit">Skicka svar</button>
+          </form>
+        </div>
+      </div>
+
+      <ng-template #thankYou>
+        <p>Formuläret har redan besvarats!</p>
+        <button (click)="resetForm()"> Återställ formuläret</button>
+      </ng-template>
+    </section>
+
+    <ng-template #noForm>
+      <p *ngIf="!resetDone">Obs: Inget formulär är tillgängligt</p>
+      <p *ngIf="resetDone">Formuläret har återställts! ✅ </p>
+    </ng-template>
+  </div>
+</div>

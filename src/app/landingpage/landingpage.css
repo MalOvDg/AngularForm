@@ -1,0 +1,115 @@
+body { margin: 0; font-family: Roboto, "Arial", sans-serif; }
+
+.landing-page {
+  padding-block: 6%;
+}
+
+.form-builder { 
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #faf6f0;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.07);
+  border: 1px solid #11161cc2;
+}
+
+.wrap {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.form-builder .success-message {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-builder h2 { 
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    padding-bottom: 0;
+    padding-left: 10px;
+}
+
+.form-group label {
+  margin: 2rem auto;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.sub-titel {
+  margin: 2rem auto;
+  font-size: 15px;
+  font-weight: 500;
+  padding-right: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input, select, button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.option-add {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.option-add input {
+  flex: 1;
+}
+
+.option-add button {
+  background: #111;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 1em 1.5em;
+  font-size: 15px;
+  border-radius: 30px;
+  margin: 35px 0;
+
+}
+
+.option-list {
+  margin-top: 0.5rem;
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.btn-add-question, .btn-submit {
+  background-color: #111;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  cursor: pointer;
+  /*border-radius: 4px;*/
+  margin-top: 1rem;
+  border-radius: 30px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.success-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: green;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .form-builder {
+    padding: 1rem;
+  }
+
+  input, select, button {
+    font-size: 1rem;
+  }
+}

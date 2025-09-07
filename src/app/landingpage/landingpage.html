@@ -1,0 +1,64 @@
+
+<div class="landing-page">
+  
+  <div class="wrap">
+  <section class="form-builder">
+    <form (ngSubmit)="submitForm()" *ngIf="!submitted">
+      <h2>Skapa ett nytt formulär</h2>
+      
+      <!-- Titel -->
+      <div class="form-group">
+        <div class="sub-titel">
+            <label for="title">Titel på formulär</label>                    
+                <input id="title" [(ngModel)]="title" name="title" required />
+          </div>
+      </div>
+
+      <!-- Välj frågetyp -->
+      <div class="form-group">
+        <label>Välj frågetyp:</label>
+          <select [(ngModel)]="newQuestionType" name="questionType">
+            <option value="text">Textfråga</option>
+            <option value="multiple-choice">Flervalsfråga</option>
+          </select>
+      </div>
+
+      <!-- Input field for new question -->
+      <div class="form-group">
+        <div class="sub-titel">
+            <label>Frågetext</label>
+              <input [(ngModel)]="newQuestionText" name="newQuestionText" required />
+        </div>
+      </div>
+
+      <!-- Options (if multiple-choice selected) -->
+      <div class="form-group" *ngIf="newQuestionType === 'multiple-choice'">
+        <div class="option-add">
+          <!--<input [(ngModel)]="optionInput" name="optionInput" placeholder="Skriv alternativ..." />--> 
+          <button type="button" (click)="addOption()">+ Lägg till svarsalternativ</button>
+        
+        </div>
+          <ul class="option-list">
+            <li *ngFor="let opt of newOptions">{{ opt }}</li>
+          </ul>
+        </div>
+
+        <button type="button" (click)="addQuestion()" class="btn-add-question">
+           + Lägg till fråga
+        </button>
+
+      <div *ngIf="questions.length > 0">
+        <h3>Frågor i formuläret:</h3>
+        <ul>
+          <li *ngFor="let q of questions">{{ q.question }} ({{ q.type === 'text' ? 'Textfråga' : 'Flervalsfråga' }})</li>
+        </ul>
+        <button type="submit" class="btn-submit">Skapa formulär ✅</button>
+      </div>
+    </form>
+
+    <div *ngIf="submitted" class="success-message">
+      <p> Formuläret är sparat ! </p>
+    </div>
+  </section>
+  </div>
+</div>

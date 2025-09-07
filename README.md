@@ -1,6 +1,27 @@
 # AngularFormNoSsr
 
+(Under construction!)
+
+Information: 
+This is a simple form where a user can add questions, text question or multi answer option question. 
+The form can therafter be answered on a separate page 'Besvara formulär'.
+An indicator let's the user know the form has been answered.
+
+• Routing between landingpage ('Home') & formviewer ('besvara Formulär')
+• Responsive 
+• Create and add questions to a Form 
+• Answer the Form on 2'nd page ('Besvara formulär')
+
+
+(toggle, multiple question not complete)
+____________
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
+
+Imports:
+@fortawesome/fontawesome-free
+@angular/material
+
+____________
 
 ## Development server
 

@@ -1,0 +1,145 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+}
+
+.section-title-logo {
+    font-size: large;
+    color: #fff;
+}
+
+.nav {
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #111;
+    position: relative;
+    height: 70px;
+    width: 100%;
+}
+
+.nav-main {
+    padding: 10px 30px;
+    display: flex;
+     align-items: left;
+    justify-content: space-between;
+    background: #111;
+    position: relative;
+    height: 70px;
+    width: 100%;
+}
+
+.nav .link {
+    display: flex;
+}
+
+.nav ul {
+    display: flex;
+    gap: 30px;
+    text-align: center;
+}
+
+.nav ul li {
+    list-style: none;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav ul li a:hover {
+    color: #ffb600;
+}
+.nav ul li a.active {
+    color: #ffb600;
+}
+
+header {
+    position: relative;
+}
+
+.toogle-btn {
+    cursor: pointer;
+    color: #fff;        
+    display: none;  /* hidden */
+}
+
+.dropdown-menu {
+    display: none; /* hidden */
+}
+
+.dropdown-menu .open {
+    display: block; /* Show when 'open' class is added */
+}
+
+.nav .list {
+    display: none;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 600px) {
+    .nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        text-align: left;
+        background: #111;
+        gap: 0;
+        overflow: hidden;
+
+        padding: 14px 2%;
+        transition: .2s;
+    }
+    .nav ul li {
+        padding: 20px;
+    }
+
+    .menu-icon {
+        display: flex;
+        cursor: pointer;
+    }
+
+    /* toogle-btn */
+    .toogle-btn {
+        display: block;  /* show toggle button */
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .dropdown-menu {
+        display: block; /* hidden */
+    }
+
+    #menuList {
+        transition: all 0.5s;
+    }
+
+    .sidenav {
+        transition: all 0.5s ease;
+    }
+
+    .nav-main {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        height: calc(70%);
+    }
+    .nav ul li a:hover {
+        color: #ffb600;
+    }
+    .nav ul li a.active {
+        color: #ffb600;
+    }
+}
