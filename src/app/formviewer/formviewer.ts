@@ -16,6 +16,8 @@ export class FormViewer implements OnInit {
   answers: Record<string, string> = {};
   resetDone = false;
 
+  answered = false;
+
   constructor(private formDataService: FormDataService, private router: Router) {}
 
   ngOnInit() {  //load from localStorage
@@ -23,8 +25,25 @@ export class FormViewer implements OnInit {
     console.log('Loaded form:', this.form);
   }
 
+  get textQuestions() {
+    return this.form?.questions?.filter(q => q.type === 'text') || [];
+  }
+
+  get multipleChoiceQuestions() {
+    return this.form?.questions?.filter(q => q.type === 'multiple-choice') || [];
+  }
+
   onSubmit() {
+    //check that at least one questions is answered
+    const answeredAny = Object.values(this.answers).some(answer => answer && answer.trim() !== '');
+
+    if (!answeredAny) {
+      alert('Svara på minst 1 fråga');
+      return;
+    }
+
     this.formDataService.markSubmitted();
+    this.answered = true;
   }
 
   isSubmitted() {

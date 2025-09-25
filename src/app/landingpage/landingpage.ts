@@ -11,45 +11,98 @@ import { CommonModule } from '@angular/common';
   templateUrl: './landingpage.html',
   styleUrl: './landingpage.css'
 })
+
 export class LandingPage {
   title = '';
-  newQuestionText = '';
   newQuestionType: 'text' | 'multiple-choice' = 'text';
+  
+  // Text question 
+  newTextQuestion = '';
+
+  // Multiple choice question 
+  newMCQuestion: string = '';
+  newMCOptions: { text: string }[] = [];
+  newMCCorrectIndex: number | null = null;
+  readonly maxOptions = 4;
+
+  questions: any[] = []; 
+  
+  setQuestionType(type: 'text' | 'multiple-choice') {
+    this.newQuestionType = type;
+
+  if (type === 'multiple-choice') {
+    this.newMCOptions = [
+      { text: '' },
+      { text: '' }
+    ];
+    this.newMCCorrectIndex = null;
+    } else {
+      this.newTextQuestion = '';
+    }
+  }
+
+  addOption() {
+    if (this.newMCOptions.length < this.maxOptions) {
+      this.newMCOptions.push({ text: '' });
+    }
+  }
+
   optionInput = '';
   newOptions: string[] = [];
-  questions: FormQuestion[] = [];
   submitted = false;
 
   constructor(private formDataService: FormDataService, private router: Router) {}
 
-  addOption() {
-    if (this.optionInput.trim()) {
-      this.newOptions.push(this.optionInput.trim());
-      this.optionInput = '';
-    }
-  }
-
   addQuestion() {
-    if (!this.newQuestionText.trim()) return;
+  if (this.newQuestionType === 'text') {
+      if (!this.newTextQuestion.trim()) return;
+
+      const question: any = {
+        question: this.newTextQuestion.trim(),
+        type: this.newQuestionType,
+        required: true
+      };
+
+      this.questions.push(question);
+
+      // Reset inputs
+      this.newTextQuestion = '';
+      this.newOptions = [];
+      this.optionInput = '';
+      this.newQuestionType = 'text';
+
+  } else if (this.newQuestionType === 'multiple-choice') {
+    if (!this.newMCQuestion.trim()) {
+      alert('Vänligen skriv en fråga');
+      return;
+    }
+
+    const filledOptions = this.newMCOptions
+    .map(opt => opt.text?.trim())
+    .filter(text => text);
+
+    if (filledOptions.length < 2) {
+      alert('Vänligen lägg till minst två svaralternativ');
+      return;
+    }
 
     const question: any = {
-      question: this.newQuestionText.trim(),
+      question: this.newMCQuestion.trim(),
       type: this.newQuestionType,
-      required: true
+      required: true,
+      options: filledOptions,
+      correctIndex: this.newMCCorrectIndex,
     };
-
-    if (this.newQuestionType === 'multiple-choice') {
-      question.options = [...this.newOptions];
-    }
 
     this.questions.push(question);
 
     // Reset inputs
-    this.newQuestionText = '';
-    this.newOptions = [];
+    this.newMCQuestion = '';
+    this.newMCOptions = [];
     this.optionInput = '';
-    this.newQuestionType = 'text';
+    this.newMCCorrectIndex = null;
   }
+}
 
   submitForm() {
     const form = {

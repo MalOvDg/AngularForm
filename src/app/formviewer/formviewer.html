@@ -3,54 +3,89 @@
   <div class="wrap">
     <section *ngIf="form; else noForm">
       <div class="section-formviewer">
-        <h2>{{ form.title }}</h2>
+        <h2 class="form-title">{{ form.title }}</h2>
 
-        <div *ngIf="!isSubmitted(); else thankYou">
-          <form (ngSubmit)="onSubmit()">
-            <div *ngFor="let q of form.questions">
+      <div class="form-group">
 
-              <div class="sub-titel">
-                <label>{{ q.question }} <span *ngIf="q.required">*</span></label>
+          <div *ngIf="!isSubmitted(); else thankYou">
+          <div *ngIf="!answered; else showAnsweredMessage">
 
-                <input
-                  *ngIf="q.type === 'text'"
-                  type="text"
-                  [(ngModel)]="answers[q.question]"
-                  name="{{ q.question }}"
-                  required
-                />
+            <form (ngSubmit)="onSubmit()">
+
+              <!-- Text questions -->
+              <div class="form-section">
+              <h3>Textfrågor</h3>
+                <div *ngFor="let q of textQuestions" class="question-block">
+
+                  <label class="question-label">
+                    {{ q.question }} <span *ngIf="q.required">*</span>
+                  </label>
+                    <input
+                      type="text"
+                      [(ngModel)]="answers[q.question]"
+                      name="{{ q.question }}"
+                      required
+                    />
+                </div>
               </div>
-              <div *ngIf="q.type === 'multiple-choice'">
-                <label *ngFor="let opt of q.options">
-                  
-                  <input
-                    type="radio"
-                    [(ngModel)]="answers[q.question]"
-                    name="{{ q.question }}"
-                    [value]="opt"
-                    required
-                  />
-                  
-                  {{ opt }}
-                </label>
-              </div>
-              <p></p><hr />
+
+              <hr class="section-divider" />
+
+              <!-- Multiple choice questions -->
+              <div class="form-section">
+                <h3>Flervalsfrågor</h3>
+                  <div *ngFor="let q of multipleChoiceQuestions" class="question-block">
+
+                      <label class="question-label bold-label">
+                        {{ q.question }} <span *ngIf="q.required">*</span>
+                      </label>
+
+                      <div class="grid-choice">
+                        <div *ngFor="let opt of q.options">
+                          <input
+                            type="text"
+                            [value]="opt"
+                            disabled
+                          />
+                          <input
+                            class="radio-box"
+                            type="radio"
+                            [(ngModel)]="answers[q.question]"
+                            name="{{ q.question }}"
+                            [value]="opt"
+                            required
+                          /> 
+                      </div>
+                      </div>
+                  </div>
+                </div>
+
+                <button class="submit-button" type="submit">Skicka svar</button>
+              </form>
+
+          </div>
+          </div>
+
+          <ng-template #showAnsweredMessage>
+            <div class="success-message">
+              <p>Formuläret är skickat!</p>
             </div>
+          </ng-template>
 
-            <button type="submit">Skicka svar</button>
-          </form>
-        </div>
+      </div>
       </div>
 
       <ng-template #thankYou>
         <p>Formuläret har redan besvarats!</p>
         <button (click)="resetForm()"> Återställ formuläret</button>
       </ng-template>
+
     </section>
 
     <ng-template #noForm>
       <p *ngIf="!resetDone">Obs: Inget formulär är tillgängligt</p>
       <p *ngIf="resetDone">Formuläret har återställts! ✅ </p>
     </ng-template>
+
   </div>
 </div>

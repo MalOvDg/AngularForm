@@ -47,7 +47,15 @@ body { margin: 0; font-family: Roboto, "Arial", sans-serif; }
   font-family: Arial, Helvetica, sans-serif;
 }
 
-input, select, button {
+.sub-titel .Title {
+  margin: 2rem auto;
+  font-size: 15px;
+  font-weight: bold;
+  padding-right: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input, select, button { /* forces all buttons and inputs to 100% width and block display */
   display: block;
   width: 100%;
   padding: 0.5rem;
@@ -57,12 +65,46 @@ input, select, button {
 
 .option-add {
   display: flex;
-  gap: 0.5rem;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.option-label {
+  align-self: center; /* works only if parent (option-add) is a flex container */
+  white-space: nowrap;
+}
+
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.option-input-wrap {
+  display: flex;
   align-items: center;
+  gap: 0.4rem;
+}
+
+.option-input-wrap input[type='text'] {
+  flex: 1;
+  padding: 0.4rem;
+}
+
+.radio-box {
+  margin-left: 0.25rem;
 }
 
 .option-add input {
   flex: 1;
+}
+
+.add-button-wrapper {
+  grid-column: 1 / -1;  /* spans the full width of the grid */
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
 }
 
 .option-add button {
@@ -70,11 +112,9 @@ input, select, button {
   color: white;
   cursor: pointer;
   border: none;
-  padding: 1em 1.5em;
+  padding: 0.8em 1.5em;
   font-size: 15px;
   border-radius: 30px;
-  margin: 35px 0;
-
 }
 
 .option-list {
@@ -95,7 +135,6 @@ input, select, button {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 
 .success-message {
   text-align: center;

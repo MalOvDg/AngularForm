@@ -4,6 +4,10 @@ body { margin: 0; font-family: Roboto, "Arial", sans-serif; }
   padding-block: 6%;
 }
 
+.form-title {
+  margin-bottom: 2rem;
+}
+
 .section-formviewer {
   max-width: 700px;
   margin: 2rem auto;
@@ -13,6 +17,80 @@ body { margin: 0; font-family: Roboto, "Arial", sans-serif; }
 
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.07);
   border: 1px solid #11161cc2;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.section-divider {
+  margin: 2rem 0;
+  border-top: 2px dashed #ccc;
+}
+
+.question-block {
+  margin-bottom: 1.5rem;
+}
+
+.question-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.bold-label {
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+/* Multiple Choice grid */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.submit-button {
+  background-color: #111;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Grid Layout for Choice Items */
+.grid-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: .5rem; /* Space between the rows/columns */
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+/* Each choice row (input + radio button) */
+.grid-choice > div {
+  display: flex;
+  align-items: center; /* Align input and radio button */
+  gap: 1rem; /* Space between the input and the radio button */
+}
+
+/* Radio Button */
+.radio-box {
+  margin-left: auto; 
+  accent-color: #111;
 }
 
 .wrap {
@@ -99,7 +177,6 @@ button {
 button:hover {
   background-color: #0056b3;
 }
-
 
 /* Mobile */
 @media (max-width: 600px) {

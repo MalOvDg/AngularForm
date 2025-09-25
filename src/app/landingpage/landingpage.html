@@ -9,7 +9,7 @@
       <!-- Titel -->
       <div class="form-group">
         <div class="sub-titel">
-            <label for="title">Titel på formulär</label>                    
+            <label class="Title" for="title">Titel på formulär</label>                    
                 <input id="title" [(ngModel)]="title" name="title" required />
           </div>
       </div>
@@ -17,32 +17,61 @@
       <!-- Välj frågetyp -->
       <div class="form-group">
         <label>Välj frågetyp:</label>
-          <select [(ngModel)]="newQuestionType" name="questionType">
+          <select [(ngModel)]="newQuestionType" (ngModelChange)="setQuestionType($event)" name="questionType">
             <option value="text">Textfråga</option>
             <option value="multiple-choice">Flervalsfråga</option>
           </select>
       </div>
 
-      <!-- Input field for new question -->
-      <div class="form-group">
+      <!-- Input field for new TEXT question -->
+      <div class="form-group" *ngIf="newQuestionType === 'text'">
         <div class="sub-titel">
             <label>Frågetext</label>
-              <input [(ngModel)]="newQuestionText" name="newQuestionText" required />
+              <input [(ngModel)]="newTextQuestion" name="newTextQuestion" required />
         </div>
       </div>
 
-      <!-- Options (if multiple-choice selected) -->
+      <!-- Multiple Choice Question (if multiple-choice selected) -->
       <div class="form-group" *ngIf="newQuestionType === 'multiple-choice'">
-        <div class="option-add">
-          <!--<input [(ngModel)]="optionInput" name="optionInput" placeholder="Skriv alternativ..." />--> 
-          <button type="button" (click)="addOption()">+ Lägg till svarsalternativ</button>
-        
+        <div class="sub-titel">
+            <label>Frågetext</label>
+            <input [(ngModel)]="newMCQuestion" name="newMCQuestion" required />
         </div>
-          <ul class="option-list">
-            <li *ngFor="let opt of newOptions">{{ opt }}</li>
-          </ul>
+        
+        <!-- choices -->
+        <label class="option-label">Svarsalternativ:</label>
+        <div class="option-add">
+
+          <div class="option-grid">
+            <!-- Option input fields --> 
+            <div *ngFor="let opt of newMCOptions; let i = index" class="option-input-wrap">
+              <input
+                type="text"
+                [(ngModel)]="opt.text"
+                [name]="'optionText' + i"
+                required
+              />
+              <input
+                class="radio-box"
+                type="radio"
+                [name]="'correctOption'"
+                [value]="i"
+                [(ngModel)]="newMCCorrectIndex"
+              />
+            </div> 
+        
+            <div class="add-button-wrapper">
+              <button type="button" (click)="addOption()" [disabled]="newMCOptions.length >= maxOptions">
+                {{ newMCOptions.length >= maxOptions ? ' Max alternativ' : '+ Lägg till svarsalternativ'}}
+              </button>
+            </div>
+          </div>
+
         </div>
 
+      </div>
+
+        <!-- Add questions to List -->
         <button type="button" (click)="addQuestion()" class="btn-add-question">
            + Lägg till fråga
         </button>
