@@ -9,11 +9,13 @@ An indicator let's the user know the form has been answered.
 
 • Routing between landingpage ('Home') & formviewer ('besvara Formulär')
 • Responsive 
-• Create and add questions to a Form 
+• Create and add text questions to a Form 
+• Create and add multiple choice questions to a Form 
 • Answer the Form on 2'nd page ('Besvara formulär')
 
 
-(toggle, multiple question not complete)
+Dod:
+(toggle menu, not complete)
 ____________
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
 
