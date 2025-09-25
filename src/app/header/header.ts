@@ -11,9 +11,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.css'
 })
 export class Header {
-  isDropDownOpen = false;
+  isMenuOpen = false;
 
-  onButtonClick() {
-    this.isDropDownOpen = !this.isDropDownOpen;
+  onButtonClick(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
   }
 }

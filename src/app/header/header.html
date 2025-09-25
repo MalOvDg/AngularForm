@@ -1,32 +1,21 @@
-    <body>
-        <header id="header">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+    <header id="header">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
-            <div class="nav">   
-                
-                <!--id:nav-main-->
+        <div class="nav">   
+            <div class="logo" id="logo">
+                <a class="section-title-logo">Parlametric</a>
+            </div>
 
-                    <div class="logo" id="logo">
-                        <a class="section-title-logo">Parlametric</a>
-                    </div>
+            <ul id="list" [class.show]="isMenuOpen">
+                <li><a class="navbar-item" routerLink="/">Home</a></li>
+                <li><a class="navbar-item" routerLink="/formviewer" routerLinkActive="is-active">Besvara Formulär</a></li>                        
+            </ul>
 
-                    <!--sidenav-nav-->
-
-                    <ul id="list">  <!--list-->
-                        <li><a class="navbar-item" routerLink="/">Home</a></li>
-                        <li><a class="navbar-item" routerLink="/formviewer" routerLinkActive="is-active">Besvara Formulär</a></li>                        
-                    </ul>
-
-                    <!-- toggle button -->
-                    <div class="toogle-btn">
-                        <i class="fa fa-bars" (click)="onButtonClick()" style="font-size:24px"></i>
-                    </div>
-                </div>
-                          
-                    <!-- dropdown menu -->
-                    <div class="dropdown-menu open" [ngClass]="{'open': isDropDownOpen}">
-                            <li><a class="navbar-item" routerLink="/">Home</a></li>
-                            <li><a class="navbar-item" routerLink="/formviewer" routerLinkActive="is-active">Besvara Formulär</a></li>
-                    </div>
-        </header>
-    </body>
+            <!-- toggle button -->
+            <div class="toogle-btn">
+                <i class="fa fa-bars" (click)="onButtonClick()" style="font-size:24px"></i>
+            </div>
+        </div>
+    </header>
+</body>
